@@ -1,17 +1,20 @@
+import React from 'react';
 import { Button }  from '@consta/uikit/Button'
 import { Layout }  from '@consta/uikit/Layout'
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { getStyleForNavLink } from '../const';
 
 const Menu = () => {
     return (
         <Layout>
-            <NavLink to="/">
+            <NavLink to="/" style={getStyleForNavLink}>
                 <Button label="Главная страница" />
             </NavLink>
-            <NavLink to="/service/">
+            <NavLink to="/service/" style={getStyleForNavLink}>
                 <Button label="Страница услуг" />
             </NavLink>
         </Layout>
-    )
+    );
 }
+
+export default Menu;

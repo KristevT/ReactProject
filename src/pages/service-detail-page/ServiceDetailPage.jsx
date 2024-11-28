@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ServicePage = () => {
+const ServiceDetailPage = () => {
     return (
         <div>
             ServiceDetailPage

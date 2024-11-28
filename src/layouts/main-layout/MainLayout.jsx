@@ -1,5 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+// import Menu from '../../components/menu/Menu';
+import Header from '../../components/header/Header'
 
 const MainLayout = () => {
     return (
@@ -9,7 +11,6 @@ const MainLayout = () => {
             <main>
                 <Outlet />
             </main>
-            <Menu />
         </div>
     )
 }

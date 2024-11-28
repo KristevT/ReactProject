@@ -3,7 +3,7 @@ import React from 'react';
 const ServicePage = () => {
     return (
         <div>
-            ServicePage
+            Страница услуг
         </div>
     )
 }
