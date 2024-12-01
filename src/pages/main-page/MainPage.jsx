@@ -1,42 +1,27 @@
-// import { Button } from '@consta/uikit/Button'
-// import React, { useState } from 'react';
+import { NewsListData } from "../../types/News";
+import { useEffect, useState } from "react";
+import { getNewsListAction } from "../../store/api-actions";
 
-const MainPage = () => {
+const MainPage = function(){
+    const [news, setNews] = useState();
+    useEffect(() => {
+        async function fetchNews(){
+            setNews(await getNewsListAction());
+        }
+        fetchNews()
+    }, []);
+
+    if (!news || news.length === 0) return <p>Нет данных.</p>
+
     return (
-        <div>
-            Главная страница
-        </div>
+        <>
+            {news.map(news => <NewsListData
+                key={news.name}
+                name={news.name}
+                description={news.description} 
+                createdAt={(new Date(news.createdAt)).toDateString()}/>)}
+        </>
     )
 }
 
-
-// const MainPage = () => {
-//     const {counter, setCounter} = useState({
-//         count: 0,
-//         incCount: 5
-//     });
-
-//     return (
-//         <>
-//             <div>Главная страница {counter}</div>
-//             <Button
-//                 label="Увеличить значение"
-//                 onClick={() => {
-//                     setCounter({
-//                         counter,
-//                         count: counter.incCount + 1})
-//                 }}
-//             />    
-//             <Button
-//                 label="Уменьшить значение"
-//                 onClick={() => {
-//                     setCounter({
-//                         counter,
-//                         count: counter.incCount - 1})
-//                 }}
-//             />
-//         </>
-//     )
-// }
-
-export default MainPage;
+export default MainPage

@@ -10,9 +10,9 @@ const Header = () => {
         <Layout>
             <Menu />
             <NavLink style={getStyleForNavLink}>
-                <Button label='ФИО'></Button>
+                <Button label='ФИО' disabled></Button>
             </NavLink>
-            <NavLink style={getStyleForNavLink}>
+            <NavLink to="/login/" style={getStyleForNavLink}>
                 <Button label='Вход'></Button>
             </NavLink>
         </Layout>
