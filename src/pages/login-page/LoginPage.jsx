@@ -26,11 +26,9 @@ const LoginPage = () => {
                 label="Пароль"
                 placeholder="Введите пароль"
             />
-            <Button label="Войти" />
-            {/* <button className="button login__submit">
-                <span className="button__text">Войти</span>
-                <i className="button__icon fas fa-chevron-right"></i>
-            </button> */}
+            { (!formData.login || !formData.password) ? 
+                <Button label="Войти" disabled="true"/>
+            : <Button label="Войти"/>}
         </form>
     )
 }

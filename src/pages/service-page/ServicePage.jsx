@@ -1,6 +1,7 @@
 import { ServicesListData } from "../../types/Services";
 import { useEffect, useState } from "react";
 import { getServicesListAction } from "../../store/api-actions";
+import { Loader } from '@consta/uikit/Loader';
 
 const ServicePage = function(){
     const [services, setServices] = useState();
@@ -21,7 +22,7 @@ const ServicePage = function(){
                 image={services.image}
                 createdAt={(new Date(services.createdAt)).toDateString()}/>)
             ) : (
-                <p>Нет данных.</p>
+                <Loader/>
             )}
         </>
     )

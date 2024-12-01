@@ -1,18 +1,29 @@
-import React from 'react';
-import { Button }  from '@consta/uikit/Button'
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { Tabs } from '@consta/uikit/Tabs';
 import { Layout }  from '@consta/uikit/Layout'
-import { NavLink } from 'react-router-dom';
-import { getStyleForNavLink } from '../const';
+
+const items = [
+    { label: "Главная страница", link: "/" },
+    { label: "Услуги компании", link: "/services" },
+];
 
 const Menu = () => {
+    const [value, setValue] = useState(items[0]);
+    const navigate = useNavigate();
     return (
         <Layout>
-            <NavLink to="/" style={getStyleForNavLink}>
-                <Button label="Главная страница" />
-            </NavLink>
-            <NavLink to="/services/" style={getStyleForNavLink}>
-                <Button label="Страница услуг" />
-            </NavLink>
+            <Tabs
+                value={value}
+                onChange={(item) => {
+                    setValue(item);
+                    navigate(item.link);
+                }}
+                items={items}
+                fitMode="scroll"
+                view="clear"
+                style={{padding: 5}}
+            />
         </Layout>
     );
 }

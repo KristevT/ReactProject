@@ -1,5 +1,5 @@
 import { Card } from '@consta/uikit/Card';
-import {Text} from '@consta/uikit/Text'
+import { Text } from '@consta/uikit/Text'
 
 export const NewsListData = function({name, description, createdAt}){
     return (

@@ -4,11 +4,11 @@ import { Avatar } from '@consta/uikit/Avatar';
 
 export const ServicesListData = function({name, description, image, createdAt}){
     return (
-        <Card>
+        <Card verticalSpace="m" horizontalSpace="m">
             <Text weight="semibold">{name}</Text>
             <Text>{description}</Text>
-            <Text size="xs" align="right" view="ghost">{createdAt}</Text>
             <Avatar url={image} name="service-image" size="l"/>
+            <Text size="xs" align="right" view="ghost">{createdAt}</Text>
         </Card>
     )
 }
