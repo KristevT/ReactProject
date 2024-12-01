@@ -2,6 +2,7 @@ import { ServicesListData } from "../../types/Services";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getServicesListAction } from "../../store/api-actions";
+import { Loader } from '@consta/uikit/Loader';
 
 const ServiceDetailPage = function(){
     const {id} = useParams();
@@ -23,7 +24,7 @@ const ServiceDetailPage = function(){
                 image={services.image}
                 createdAt={(new Date(services.createdAt)).toDateString()}/>
             ) : (
-                <p>Нет данных.</p>
+                <Loader/>
             )}
         </>
     )

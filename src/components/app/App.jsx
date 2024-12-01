@@ -1,11 +1,5 @@
 import React from 'react';
 import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
-// import { Button } from '@consta/uikit/Button';
-// import { Attachment } from '@consta/uikit/Attachment'
-// import { Card } from '@consta/uikit/Card'
-// import { Text } from '@consta/uikit/Text'
-// import { Layout } from '@consta/uikit/Layout'
-// import { cnMixSpace } from '@consta/uikit/MixSpace'
 import { Responses404 } from '@consta/uikit/Responses404'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from '../../pages/main-page/MainPage';
