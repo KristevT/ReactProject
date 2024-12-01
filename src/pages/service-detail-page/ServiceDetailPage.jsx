@@ -1,31 +1,32 @@
-// import { Button } from '@consta/uikit/Button'
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import { ServicesListData } from "../../types/Services";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getServicesListAction } from "../../store/api-actions";
 
-// const ServiceDetailPage = () => {
-//     const {id} = useParams();
+const ServiceDetailPage = function(){
+    const {id} = useParams();
+    const [services, setServices] = useState();
+    useEffect(() => {
+        async function fetchServices(){
+            setServices(await getServicesListAction(id));
+        }
+        fetchServices()
+    }, [id]);
 
-//     const [serviceId, serServiceId] = useState(id);
-//     const [service, setService] = useState(null);
-//     const [count, setCount] = useState(0);
-//     const [int, setInt] = useState(0);
+    return (
+        <>
+            {services ? (
+                <ServicesListData
+                key={services.name}
+                name={services.name}
+                description={services.description}
+                image={services.image}
+                createdAt={(new Date(services.createdAt)).toDateString()}/>
+            ) : (
+                <p>Нет данных.</p>
+            )}
+        </>
+    )
+}
 
-//     useEffect(() => {
-//         let isNeedUpdate = true;
-//         fetch(`...`)
-//     }
-
-//     )
-
-//     return (
-//         <div>
-//             ServiceDetailPage
-//             <Button
-//                 onClick={() => setInt((prev) => + 1)}
-//                 label="Следующая услуга"
-//             />
-//         </div>
-//     )
-// }
-
-// export default ServiceDetailPage;
+export default ServiceDetailPage

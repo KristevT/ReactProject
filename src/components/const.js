@@ -1,7 +1,8 @@
 export const AppRoute = {
     main: '/',
-    service: '/service',
-    login: '/login'
+    service: '/services/',
+    login: '/login/',
+    user: '/user/'
 }
 
 export const URLs = {

@@ -9,8 +9,8 @@ export const getNewsListAction = async function(){
     return await response.data
 }
 
-export const getServicesListAction = async function () {
-    let response = await axios.get(URLs.services);
+export const getServicesListAction = async function(id='') {
+    let response = await axios.get(`${URLs.services}/${id}`);
     return response.data
 }
 

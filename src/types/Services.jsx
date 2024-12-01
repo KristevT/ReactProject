@@ -1,13 +1,14 @@
 import { Card } from '@consta/uikit/Card';
-import {Text} from '@consta/uikit/Text'
+import { Text } from '@consta/uikit/Text'
+import { Avatar } from '@consta/uikit/Avatar';
 
 export const ServicesListData = function({name, description, image, createdAt}){
     return (
         <Card>
-            <Text>{name}</Text>
+            <Text weight="semibold">{name}</Text>
             <Text>{description}</Text>
             <Text size="xs" align="right" view="ghost">{createdAt}</Text>
-            <img src={image} alt="img"/>
+            <Avatar url={image} name="service-image" size="l"/>
         </Card>
     )
 }

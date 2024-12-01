@@ -11,16 +11,18 @@ const ServicePage = function(){
         fetchServices()
     }, []);
 
-    if (!services || services.length === 0) return <p>Нет данных.</p>
-
     return (
         <>
-            {services.map(services => <ServicesListData
+            {services ? (
+                services.map(services => <ServicesListData
                 key={services.name}
                 name={services.name}
                 description={services.description}
                 image={services.image}
-                createdAt={(new Date(services.createdAt)).toDateString()}/>)}
+                createdAt={(new Date(services.createdAt)).toDateString()}/>)
+            ) : (
+                <p>Нет данных.</p>
+            )}
         </>
     )
 }

@@ -10,7 +10,7 @@ const Menu = () => {
             <NavLink to="/" style={getStyleForNavLink}>
                 <Button label="Главная страница" />
             </NavLink>
-            <NavLink to="/service/" style={getStyleForNavLink}>
+            <NavLink to="/services/" style={getStyleForNavLink}>
                 <Button label="Страница услуг" />
             </NavLink>
         </Layout>
