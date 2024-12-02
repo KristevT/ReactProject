@@ -4,7 +4,8 @@ import { Text } from '@consta/uikit/Text';
 import { Card } from '@consta/uikit/Card';
 
 const UserPage = function(){
-    const user = useSelector(state => state.user.user) 
+    const user = useSelector(state => state.user.user)
+    
     return (
         <Card verticalSpace='xs' horizontalSpace='m'>
             <Grid gap="s" cols={4}>

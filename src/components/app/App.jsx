@@ -7,8 +7,9 @@ import ServiceDetailPage from '../../pages/service-detail-page/ServiceDetailPage
 import LoginPage from '../../pages/login-page/LoginPage';
 import UserPage from '../../pages/user-page/UserPage';
 import MainLayout from '../../layouts/main-layout/MainLayout';
-import { AppRoute } from '../const';
 import NotFoundPage from '../../pages/not-found-page/NotFoundPage';
+import CheckAuth from '../check_auth/CheckAuth';
+import { AppRoute } from '../const';
 
 const App = function() {
   return (
@@ -17,9 +18,9 @@ const App = function() {
         <Routes>
           <Route path={AppRoute.main} element={<MainLayout />}>
             <Route index element={<MainPage />}/>
-            <Route path={AppRoute.service} element={<ServicePage />} />
-            <Route path={AppRoute.servicedetail} element={<ServiceDetailPage />} />
-            <Route path={AppRoute.user} element={<UserPage/>} />
+            <Route path={AppRoute.service} element={<CheckAuth><ServicePage/></CheckAuth>} />
+            <Route path={AppRoute.servicedetail} element={<CheckAuth><ServiceDetailPage/></CheckAuth>} />
+            <Route path={AppRoute.user} element={<CheckAuth><UserPage/></CheckAuth>} />
             <Route path={AppRoute.login} element={<LoginPage />} />
           </Route>
           <Route path="*" element={<NotFoundPage />}/>
