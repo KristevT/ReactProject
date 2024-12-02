@@ -60,6 +60,7 @@ const LoginPage = () => {
                 label="Логин"
                 placeholder="Введите логин"
             />
+            <p/>
             <TextField
                 onChange={handlePasswordChange}
                 status={status}
@@ -69,8 +70,12 @@ const LoginPage = () => {
                 label="Пароль"
                 placeholder="Введите пароль"
             />
+            <p/>
             {error && (
-                <Informer status="alert" title="Error" label='Username or password is incorrect' />
+                <>
+                    <Informer status="alert" title="Error" label='Username or password is incorrect' />
+                    <p/>
+                </>
             )}
             {(!username || !password) ? 
                 <Button label="Войти" disabled/>

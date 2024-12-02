@@ -12,7 +12,7 @@ const Menu = () => {
     const [value, setValue] = useState(items[0]);
     const navigate = useNavigate();
     return (
-        <Layout>
+        <Layout flex={1}>
             <Tabs
                 value={value}
                 onChange={(item) => {
