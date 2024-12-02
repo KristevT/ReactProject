@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@consta/uikit/Button';
-import { Avatar } from '@consta/uikit/Avatar';
+import { User } from '@consta/uikit/User';
 import { Layout } from '@consta/uikit/Layout';
 import { clearUser } from '../../store/user-slice';
 import Menu from '../menu/Menu';
@@ -10,34 +10,29 @@ import Menu from '../menu/Menu';
 const Header = () => {
     const user = useSelector(state => state.user.user)
     const dispatch = useDispatch()
-    const avatar = () => (user) ? <Avatar url={user?.image}/> : <Avatar monochrome size='s'/>
     const handleExit = () => {
         dispatch(clearUser())
     }
 
     return (
-        <Layout>
+        <Layout flex={1} horizontalAlign='right'>
             <Menu />
             {(user) ? 
                 <>
                 <NavLink to="/user" style={{padding: 5}}>
-                    <Button label={`${user?.firstName} ${user?.lastName}`} form="round" view="secondary" iconLeft={avatar}></Button>
+                    <User name={`${user?.firstName} ${user?.lastName}`} avatarUrl={user?.image} size='l' view='ghost'/>
                 </NavLink>
                 <NavLink to="/login" onClick={handleExit} style={{padding: 5}}>
-                    <Button label='Выход' form="round"></Button>
+                    <Button label='Выход' view='ghost' form='round'></Button>
                 </NavLink>
                 </>
             :             
                 <>
                 <NavLink to="/login" style={{padding: 5}}>
-                    <Button label='Гость' form="round" view="ghost" iconLeft={avatar}></Button>
-                </NavLink>
-                <NavLink to="/login" style={{padding: 5}}>
-                    <Button label='Вход' form="round"></Button>
+                    <Button label='Вход' view='ghost' form='round'></Button>
                 </NavLink>
                 </>
             }
-
         </Layout>
     );
 }
