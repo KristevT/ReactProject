@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@consta/uikit/Button';
 import { User } from '@consta/uikit/User';
 import { Layout } from '@consta/uikit/Layout';
-import { clearUser } from '../../store/user-slice';
+import { clearUser } from '../../store/userSlice';
 import Menu from '../menu/Menu';
 
 const Header = () => {

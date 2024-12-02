@@ -4,15 +4,18 @@ import { useEffect, useState } from "react";
 import { getServicesListAction } from "../../store/api-actions";
 import { Loader } from '@consta/uikit/Loader';
 import { Layout } from "@consta/uikit/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { setServicesState } from "../../store/servicesSlice";
 
 const ServicePage = function(){
-    const [services, setServices] = useState();
+    const dispatch = useDispatch()
+    const [services, setServices] = useState(useSelector(state => state.services.value));
     useEffect(() => {
-        async function fetchServices(){
-            setServices(await getServicesListAction());
-        }
-        fetchServices()
-    }, []);
+        getServicesListAction().then(resp=>{
+            setServices(resp)
+            dispatch(setServicesState(resp))
+        })
+    }, [dispatch]);
 
     return (
         <Layout direction="column" style={{maxWidth: "1200px", minHeight: "100vh"}}>  
@@ -26,7 +29,7 @@ const ServicePage = function(){
                     createdAt={(new Date(services.createdAt)).toDateString()}/>)
                 ) : (
                     <Loader/>
-                )}
+                )}  
             </Grid>
         </Layout>
     )
