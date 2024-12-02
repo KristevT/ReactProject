@@ -5,9 +5,11 @@ import React from 'react';
 const Footer = () => {
     return (
         <Layout>
-            <Text size="xs" align="right" view="ghost">© 2024 Моя Компания</Text>
+            <div>
+                <Text size="xs" align="right" view="ghost">© 2024 Моя Компания</Text>
+            </div>
         </Layout>
-    );
+    )
 }
 
 export default Footer;
