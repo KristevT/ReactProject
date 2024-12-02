@@ -1,35 +1,81 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 import { TextField } from '@consta/uikit/TextField';
 import { Button } from '@consta/uikit/Button';
+import { Informer } from '@consta/uikit/Informer';
+// import { saveToken } from '../../services/token';
+// import { getAuthToken } from '../../store/api-actions';
+import { signin } from '../../store/api-actions';
+import { setUser } from '../../store/user-slice';
+
 
 const LoginPage = () => {
-    const [formData, setFormData] = useState({
-        login: '',
-        password: '',
-    });
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
+    const [status, setStatus] = useState(state => state)
+    const [error, setError] = useState(error => error)
+
+    const [username, setUsername] = useState(null);
+    const handleUsernameChange = (value) => setUsername(value);
+    const [password, setPassword] = useState(null);
+    const handlePasswordChange = (value) => setPassword(value);
+
+
+    function handleSignin(){
+        signin({
+            "username": username,
+            "password": password
+        }).then(resp => {
+            if (resp.status === 200){
+                let respData = resp.data
+                console.log('Successful login!')
+                setStatus('success')
+                setError(undefined)
+                dispatch(
+                    setUser(
+                        {
+                            user: respData,
+                            token: respData.accessToken
+                        }
+                    )
+                )
+                navigate("/")
+            }
+        }).catch(_=>{
+            setStatus('alert')
+            setError('alert')
+        })
+    }
+    
     return (
-        <form className="feedback-form">
+        <div style={{padding: 5}}>
             <TextField
-                onChange={(value) => setFormData({...formData, login: value})}
-                value={formData.login}
-                name="login"
+                onChange={handleUsernameChange}
+                status={status}
+                value={username}
+                name="username"
                 type="text"
                 label="Логин"
                 placeholder="Введите логин"
             />
             <TextField
-                onChange={(value) => setFormData({...formData, password: value})}
-                value={formData.password}
+                onChange={handlePasswordChange}
+                status={status}
+                value={password}
                 name="password"
                 type="text"
                 label="Пароль"
                 placeholder="Введите пароль"
             />
-            { (!formData.login || !formData.password) ? 
-                <Button label="Войти" disabled="true"/>
-            : <Button label="Войти"/>}
-        </form>
+            {error && (
+                <Informer status="alert" title="Error" label='Username or password is incorrect' />
+            )}
+            {(!username || !password) ? 
+                <Button label="Войти" disabled/>
+            : <Button label="Войти" onClick={handleSignin}/>}
+        </div>
     )
 }
 
