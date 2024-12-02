@@ -7,7 +7,7 @@ import { Informer } from '@consta/uikit/Informer';
 // import { saveToken } from '../../services/token';
 // import { getAuthToken } from '../../store/api-actions';
 import { signin } from '../../store/api-actions';
-import { setUser } from '../../store/user-slice';
+import { setUser } from '../../store/userSlice';
 
 
 const LoginPage = () => {
