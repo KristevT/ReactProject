@@ -13,14 +13,13 @@ const UserPage = function(){
                     <img src={user?.image} alt='avatar'/>
                 </GridItem>
                 <GridItem col={3}>
-                    <Text>
-                        <p> 
-                            <Text size="2xl" weight="semibold"> Профиль </Text> <br/>
-                            <b>Имя:     </b> {user?.firstName} <br/>
-                            <b>Фамилия: </b> {user?.lastName} <br/>
-                            <b>Почта:   </b> {user?.email} <br/>
-                        </p>
-                    </Text>
+                    <div>
+                        <br/> 
+                        <Text size="2xl" weight="semibold"> Профиль </Text> <br/>
+                        <b>Имя:     </b> {user?.firstName} <br/>
+                        <b>Фамилия: </b> {user?.lastName} <br/>
+                        <b>Почта:   </b> {user?.email} <br/>
+                    </div>
                 </GridItem>
             </Grid>
         </Card>
