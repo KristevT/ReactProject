@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer>
             <Menu/>
-            <Text size="xs" align="right" view="ghost">© 2024 Моя Компания</Text>
+            <Text size="xs" align="right" view="ghost">© {new Date().getFullYear()} Моя Компания</Text>
         </footer>
     )
 }
